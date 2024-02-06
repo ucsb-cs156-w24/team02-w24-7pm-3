@@ -190,7 +190,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
         UCSBDiningCommonsMenuItem itemOrig = UCSBDiningCommonsMenuItem.builder()
                 .diningCommonsCode("I2LD")
                 .name("PIZZA")
-                .station("Taco Station").build();
+                .station("Pizza Station").build();
 
         UCSBDiningCommonsMenuItem itemEdited = UCSBDiningCommonsMenuItem.builder()
                 .diningCommonsCode("DLG")
