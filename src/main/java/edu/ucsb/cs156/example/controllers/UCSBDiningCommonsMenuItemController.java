@@ -32,7 +32,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/api/ucsbdiningcommonsmenuitem")
 @RestController
 @Slf4j
-public class UCSBDiningCommonsMenuItemController {
+public class UCSBDiningCommonsMenuItemController extends ApiController{
     
     @Autowired
     UCSBDiningCommonsMenuItemRepository ucsbDiningCommonsMenuItemRepository;
@@ -64,5 +64,17 @@ public class UCSBDiningCommonsMenuItemController {
         UCSBDiningCommonsMenuItem savedUcsbDiningCommonsMenuItem = ucsbDiningCommonsMenuItemRepository.save(ucsbDiningCommonsMenuItem);
 
         return savedUcsbDiningCommonsMenuItem;
+    }
+
+    @Operation(summary= "Get a single dining commons menu item by id")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public UCSBDiningCommonsMenuItem getById(
+            @Parameter(name="id") @RequestParam Long id) {
+                
+        UCSBDiningCommonsMenuItem menuItem = ucsbDiningCommonsMenuItemRepository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommonsMenuItem.class, id));
+
+        return menuItem;
     }
 }
