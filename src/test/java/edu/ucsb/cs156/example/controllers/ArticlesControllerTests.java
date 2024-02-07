@@ -276,8 +276,8 @@ public class ArticlesControllerTests extends ControllerTestCase{
                     .title("Handy Spring Utility Classes")
                     .url("https://twitter.com/maciejwalkowiak/status/1511736828369719300?t=gGXpmBH4y4eY9OBSUInZEg&s=09")
                     .explanation("A lot of really useful classes are built into Spring")
-                    .email("phtcon@ucsb.edu")
-                    .dateAdded(ldt1)
+                    .email("yisheng@ucsb.edu")
+                    .dateAdded(ldt2)
                     .build();
 
             String requestBody = mapper.writeValueAsString(articlesEdited);
@@ -303,7 +303,7 @@ public class ArticlesControllerTests extends ControllerTestCase{
     
     @WithMockUser(roles = { "ADMIN", "USER" })
     @Test
-    public void admin_cannot_edit_ucsbdate_that_does_not_exist() throws Exception {
+    public void admin_cannot_edit_articles_that_does_not_exist() throws Exception {
             // arrange
 
             LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
