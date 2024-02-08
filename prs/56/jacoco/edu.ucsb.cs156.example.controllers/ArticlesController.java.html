@@ -75,7 +75,7 @@ import lombok.extern.slf4j.Slf4j;
     @Operation(summary= &quot;Delete an article&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @DeleteMapping(&quot;&quot;)
-    public Object deleteUCSBDate(
+    public Object deleteArticles(
             @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
 <span class="fc" id="L80">        Articles article = articlesRepository.findById(id)</span>
 <span class="fc" id="L81">                .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
