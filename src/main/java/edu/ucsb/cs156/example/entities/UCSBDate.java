@@ -14,7 +14,7 @@ import lombok.Builder;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor 
 @Builder
 @Entity(name = "ucsbdates")
 public class UCSBDate {

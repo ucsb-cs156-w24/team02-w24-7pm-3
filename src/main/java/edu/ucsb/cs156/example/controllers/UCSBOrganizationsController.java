@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,26 +22,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
- 
-@Tag(name = "UCSBDiningCommons")
-@RequestMapping("/api/ucsbdiningcommons")
+@Tag(name = "UCSBOrganizations")
+@RequestMapping("/api/ucsborganizations")
 @RestController
 @Slf4j
-public class UCSBDiningCommonsController extends ApiController {
 
-    @Autowired
-    UCSBDiningCommonsRepository ucsbDiningCommonsRepository;
+public class UCSBOrganizationsController {
+    /*@Autowired
+    UCSBDiningCommonsRepository ucsbOrganizationsRepository;
 
-    @Operation(summary= "List all ucsb dining commons")
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @Operation(summary= "Gets the list of active organizations")
     @GetMapping("/all")
-    public Iterable<UCSBDiningCommons> allCommonss() {
-        Iterable<UCSBDiningCommons> commons = ucsbDiningCommonsRepository.findAll();
-        return commons;
-    }
 
-    @Operation(summary= "Create a new commons")
+    @Operation(summary= "Create a ")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public UCSBDiningCommons postCommons(
@@ -111,5 +106,5 @@ public class UCSBDiningCommonsController extends ApiController {
         ucsbDiningCommonsRepository.save(commons);
 
         return commons;
-    }
+    }*/
 }
