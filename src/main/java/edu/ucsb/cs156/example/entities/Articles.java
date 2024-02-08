@@ -15,7 +15,7 @@ import javax.persistence.GenerationType;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Builder
 @Entity(name = "articles")
 public class Articles {
