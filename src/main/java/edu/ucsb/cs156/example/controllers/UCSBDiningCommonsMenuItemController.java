@@ -40,7 +40,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController{
     @Operation(summary= "List all ucsb dining commons menu items")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
-    public Iterable<UCSBDiningCommonsMenuItem> allUCSBDates() {
+    public Iterable<UCSBDiningCommonsMenuItem> allUCSBDiningCommonsMenuItem() {
         Iterable<UCSBDiningCommonsMenuItem> menuItems = ucsbDiningCommonsMenuItemRepository.findAll();
         return menuItems;
     }
@@ -81,7 +81,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController{
     @Operation(summary= "Update a single dining commons menu item")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
-    public UCSBDiningCommonsMenuItem updateUCSBDate(
+    public UCSBDiningCommonsMenuItem updateUCSBDiningCommonsMenuItem(
             @Parameter(name="id") @RequestParam Long id,
             @RequestBody @Valid UCSBDiningCommonsMenuItem incoming) {
 
