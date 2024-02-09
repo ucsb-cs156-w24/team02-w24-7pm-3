@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-w24/team02-w24-7pm-3
 owner: ucsb-cs156-w24
 repo_name: team02-w24-7pm-3
-pull_requests: [{"author":{"id":"MDQ6VXNlcjY4MTY0Njk0","is_bot":false,"login":"cydthe","name":""},"headRefName":"cg-UCSBOrganization-create-db","number":58,"title":"creating UCSBOrganizations Database","url":"https://github.com/ucsb-cs156-w24/team02-w24-7pm-3/pull/58"},{"author":{"id":"MDQ6VXNlcjIzNDM4MzQ2","is_bot":false,"login":"calee14","name":"Cappillen Lee"},"headRefName":"cl-UCSBDiningCommonsMenuItem-put","number":51,"title":"Add PUT (edit) endpoint for a single record in UCSBDiningCommonsMenuItem table","url":"https://github.com/ucsb-cs156-w24/team02-w24-7pm-3/pull/51"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjY4MTY0Njk0","is_bot":false,"login":"cydthe","name":""},"headRefName":"cg-UCSBOrganization-create-db","number":58,"title":"creating UCSBOrganizations Database","url":"https://github.com/ucsb-cs156-w24/team02-w24-7pm-3/pull/58"}]
