@@ -40,7 +40,7 @@ import java.time.LocalDateTime;
     @Operation(summary= &quot;List all ucsb dining commons menu items&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
     @GetMapping(&quot;/all&quot;)
-    public Iterable&lt;UCSBDiningCommonsMenuItem&gt; allUCSBDates() {
+    public Iterable&lt;UCSBDiningCommonsMenuItem&gt; allUCSBDiningCommonsMenuItem() {
 <span class="fc" id="L44">        Iterable&lt;UCSBDiningCommonsMenuItem&gt; menuItems = ucsbDiningCommonsMenuItemRepository.findAll();</span>
 <span class="fc" id="L45">        return menuItems;</span>
     }
