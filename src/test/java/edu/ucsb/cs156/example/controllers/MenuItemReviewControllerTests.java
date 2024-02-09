@@ -59,7 +59,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
 
     @WithMockUser(roles = { "USER" })
     @Test
-    public void logged_in_user_can_get_all_ucsbdates() throws Exception {
+    public void logged_in_user_can_get_all_menuItemReview() throws Exception {
 
             // arrange
             LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
@@ -116,7 +116,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
 
     @WithMockUser(roles = { "ADMIN", "USER" })
     @Test
-    public void an_admin_user_can_post_a_new_ucsbdate() throws Exception {
+    public void an_admin_user_can_post_a_new_menuitemreview() throws Exception {
             // arrange
 
             // arrange
@@ -206,7 +206,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
 
     @WithMockUser(roles = { "ADMIN", "USER" })
     @Test
-    public void admin_can_delete_a_date() throws Exception {
+    public void admin_can_delete_a_menureview() throws Exception {
             // arrange
 
             LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
@@ -334,6 +334,5 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
             verify(menuItemReviewRepository, times(1)).findById(67L);
             Map<String, Object> json = responseToJson(response);
             assertEquals("MenuItemReview with id 67 not found", json.get("message"));
-
     }
 }
