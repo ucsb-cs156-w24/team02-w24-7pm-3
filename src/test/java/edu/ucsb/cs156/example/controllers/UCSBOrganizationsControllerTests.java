@@ -118,14 +118,14 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
                                 .orgCode("1234")
                                 .orgTranslationShort("HOB")
                                 .orgTranslation("House of Blues")
-                                .inactive(false)
+                                .inactive(true)
                                 .build();
 
                 when(ucsbOrgsRepository.save(eq(ucsbOrg1))).thenReturn(ucsbOrg1);
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/ucsborganizations/post?orgCode=1234&orgTranslationShort=HOB&orgTranslation=House of Blues&inactive=false")
+                                post("/api/ucsborganizations/post?orgCode=1234&orgTranslationShort=HOB&orgTranslation=House of Blues&inactive=true")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
@@ -257,7 +257,7 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
 
 
                 UCSBOrganizations ucsbOrgEdited = UCSBOrganizations.builder()
-                .orgCode("1123")
+                .orgCode("112")
                 .orgTranslationShort("COF")
                 .orgTranslation("Cards of Fate")
                 .inactive(true)
@@ -302,7 +302,7 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                put("/api/ucsborganizations?orgCode=56781&inactive=false")
+                                put("/api/ucsborganizations?orgCode=56781")
                                                 .contentType(MediaType.APPLICATION_JSON)
                                                 .characterEncoding("utf-8")
                                                 .content(requestBody)
