@@ -1,5 +1,6 @@
 package edu.ucsb.cs156.example.controllers;
 
+import edu.ucsb.cs156.example.entities.UCSBDiningCommons;
 import edu.ucsb.cs156.example.entities.UCSBOrganizations;
 import edu.ucsb.cs156.example.errors.EntityNotFoundException;
 import edu.ucsb.cs156.example.repositories.UCSBOrganizationsRepository;
@@ -10,19 +11,22 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @Tag(name = "UCSBOrganizations")
-@RequestMapping("/api/UCSBOrganizations")
+@RequestMapping("/api/ucsborganizations")
 @RestController
 @Slf4j
 public class UCSBOrganizationsController extends ApiController {
@@ -48,13 +52,11 @@ public class UCSBOrganizationsController extends ApiController {
             @Parameter(name="inactive") @RequestParam boolean inactive)
             throws JsonProcessingException {
 
-        // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-        // See: https://www.baeldung.com/spring-date-parameters
-
         UCSBOrganizations ucsbOrg = new UCSBOrganizations();
         ucsbOrg.setOrgCode(orgCode);
         ucsbOrg.setOrgTranslationShort(orgTranslationShort);
         ucsbOrg.setOrgTranslation(orgTranslation);
+        ucsbOrg.setInactive(inactive);
 
         UCSBOrganizations savedOrg = ucsbOrgsRepository.save(ucsbOrg);
 
@@ -81,7 +83,7 @@ public class UCSBOrganizationsController extends ApiController {
                 .orElseThrow(() -> new EntityNotFoundException(UCSBOrganizations.class, orgCode));
 
         ucsbOrgsRepository.delete(ucsbOrg);
-        return genericMessage("UCSBDate with orgCode %s deleted".formatted(orgCode));
+        return genericMessage("UCSBOrg with orgCode %s deleted".formatted(orgCode));
     }
 
     @Operation(summary= "Update organization status")
@@ -89,12 +91,15 @@ public class UCSBOrganizationsController extends ApiController {
     @PutMapping("")
     public UCSBOrganizations updateUCSBOrgStatus(
             @Parameter(name="orgCode") @RequestParam String orgCode,
-            @Parameter(name="inactive") @RequestParam boolean inactive) {
+            @RequestBody @Valid UCSBOrganizations incoming) { 
 
         UCSBOrganizations ucsbOrg = ucsbOrgsRepository.findById(orgCode)
                 .orElseThrow(() -> new EntityNotFoundException(UCSBOrganizations.class, orgCode));
 
-        ucsbOrg.setInactive(inactive);
+        ucsbOrg.setInactive(incoming.getInactive());
+        ucsbOrg.setOrgCode(incoming.getOrgCode());
+        ucsbOrg.setOrgTranslation(incoming.getOrgTranslation());
+        ucsbOrg.setOrgTranslationShort(incoming.getOrgTranslationShort());
         ucsbOrgsRepository.save(ucsbOrg);
 
         return ucsbOrg;
@@ -102,3 +107,4 @@ public class UCSBOrganizationsController extends ApiController {
 
 
 }
+
