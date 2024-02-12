@@ -292,7 +292,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                                             .characterEncoding("utf-8")
                                             .content(requestBody)
                                             .with(csrf()))
-                            .andExpect(status().isOk()).andReturn();
+                            .andExpect(status().isOk()).andReturn(); 
 
             // assert
             verify(menuItemReviewRepository, times(1)).findById(67L);
