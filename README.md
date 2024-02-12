@@ -3,10 +3,10 @@
 ```
 | Table                       | Team Member  | Github Id     |
 |-----------------------------|--------------|---------------|
-| `UCSBDiningCommonsMenuItem` | Ryan         | Rytuose       |
+| `UCSBDiningCommonsMenuItem` | Cappillen    | calee14       |
 | `UCSBOrganization`          | Cindy        | cydthe        |
 | `RecommendationRequest`     | Shamita      | shamitagurusu |
-| `MenuItemReview`            | Cappillen    | calee14       |
+| `MenuItemReview`            | Ryan         | Rytuose       |
 | `HelpRequest`               | Joseph       | JosephLiCodes |
 | `Articles`                  | Jason        | wzqd          |
 ```
