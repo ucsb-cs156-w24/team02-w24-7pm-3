@@ -16,7 +16,7 @@ import lombok.Builder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "recommendationrequest")
+@Entity(name = "recommendationrequests")
 public class RecommendationRequests  {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

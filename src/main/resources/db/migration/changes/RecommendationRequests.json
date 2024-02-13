@@ -3,7 +3,7 @@
       {
         "changeSet": {
           "id": "RecommendationRequests-1",
-          "author": "ThienanV",
+          "author": "ShamitaGurusu",
           "preConditions": [
             {
               "onFail": "MARK_RAN"
