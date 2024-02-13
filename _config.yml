@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-w24/team02-w24-7pm-3
 owner: ucsb-cs156-w24
 repo_name: team02-w24-7pm-3
-pull_requests: [{"author":{"id":"MDQ6VXNlcjM3NDc5NDM3","is_bot":false,"login":"shamitagurusu","name":"Shamita Gurusu"},"headRefName":"shamita-RecReq-create-db","number":63,"title":"DB files created for Recommendation Requests ","url":"https://github.com/ucsb-cs156-w24/team02-w24-7pm-3/pull/63"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjM3NDc5NDM3","is_bot":false,"login":"shamitagurusu","name":"Shamita Gurusu"},"headRefName":"shamita-RecReq-controller","number":64,"title":"RecommendationRequests Controller + ControllerTest created","url":"https://github.com/ucsb-cs156-w24/team02-w24-7pm-3/pull/64"},{"author":{"id":"MDQ6VXNlcjM3NDc5NDM3","is_bot":false,"login":"shamitagurusu","name":"Shamita Gurusu"},"headRefName":"shamita-RecReq-create-db","number":63,"title":"DB files created for Recommendation Requests ","url":"https://github.com/ucsb-cs156-w24/team02-w24-7pm-3/pull/63"}]
