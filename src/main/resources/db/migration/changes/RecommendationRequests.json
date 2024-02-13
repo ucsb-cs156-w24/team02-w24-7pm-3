@@ -3,7 +3,7 @@
       {
         "changeSet": {
           "id": "RecommendationRequests-1",
-          "author": "ThienanV",
+          "author": "ShamitaGurusu",
           "preConditions": [
             {
               "onFail": "MARK_RAN"
@@ -25,13 +25,14 @@
                 "columns": [
                   {
                     "column": {
-                      "name": "ID",
-                      "type": "BIGINT",
                       "autoIncrement": true,
                       "constraints": {
                         "primaryKey": true,
+                        "primaryKeyName": true,
                         "nullable": false
-                      }
+                      },
+                      "name": "ID",
+                      "type": "BIGINT"
                     }
                   },
                   {
