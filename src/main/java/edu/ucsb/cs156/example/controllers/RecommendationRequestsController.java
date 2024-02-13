@@ -35,22 +35,23 @@ import java.time.LocalDateTime;
 public class RecommendationRequestsController extends ApiController {
 
     @Autowired
-    RecommendationRequestsRepository recRequRep;
+    RecommendationRequestsRepository recReqRep;
 
-    @Operation(summary = "List all recommendation requests")
+    @Operation(summary = "Get all recommendation requests")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
     public Iterable<RecommendationRequests> allRequests() {
-        return recRequRep.findAll();
+        Iterable<RecommendationRequests> recommendationRequests = recReqRep.findAll();
+        return recommendationRequests;
     }
 
-    @Operation(summary = "Create a new recommendation request")
+    @Operation(summary = "Create a single new recommendation request")
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @PostMapping("/post")
 public RecommendationRequests postRequest(
         @Parameter(description="requesterEmail") @RequestParam String requesterEmail,
         @Parameter(description="professorEmail") @RequestParam String professorEmail,
-        @Parameter(description="explanation") @RequestParam String explanation,
+        @Parameter(description="Explanation") @RequestParam String Explanation,
         @Parameter(description="dateRequested") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
         @Parameter(description="dateNeeded") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateNeeded,
         @Parameter(description="done") @RequestParam boolean done) {
@@ -58,21 +59,55 @@ public RecommendationRequests postRequest(
     RecommendationRequests request = new RecommendationRequests();
     request.setRequesterEmail(requesterEmail);
     request.setProfessorEmail(professorEmail);
-    request.setExplanation(explanation);
+    request.setExplanation(Explanation);
     request.setDateRequested(dateRequested);
     request.setDateNeeded(dateNeeded);
     request.setDone(done);
 
-    return recRequRep.save(request);
+    RecommendationRequests savedRequest = recReqRep.save(request);
+    return savedRequest;
 }
-    @Operation(summary = "Get a single recommendation request")
+
+
+   @Operation(summary = "Get one single recommendation request")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
     public RecommendationRequests getById(
         @Parameter(name="id") @RequestParam Long id) { 
-    RecommendationRequests recommendationRequests = recRequRep.findById(id)
+    RecommendationRequests recommendationRequests = recReqRep.findById(id)
             .orElseThrow(() -> new EntityNotFoundException(RecommendationRequests.class, id));
 
             return recommendationRequests;
     } 
+    @Operation(summary = "Delete a single recommendation request")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("")
+    public Object deleteRequest(@Parameter(name="id") @RequestParam Long id) {
+        RecommendationRequests request = recReqRep.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(RecommendationRequests.class, id));
+                recReqRep.delete(request);
+        return genericMessage("RecommendationRequests with id %s deleted".formatted(id));
+    }
+
+    @Operation(summary = "Update one single recommendation request")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("")
+    public RecommendationRequests updateRequest(
+            @Parameter(name="id") @RequestParam Long id,
+            @RequestBody @Valid RecommendationRequests incoming) {
+
+        RecommendationRequests request = recReqRep.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(RecommendationRequests.class, id));
+
+        request.setRequesterEmail(incoming.getRequesterEmail());
+        request.setProfessorEmail(incoming.getProfessorEmail());
+        request.setExplanation(incoming.getExplanation());
+        request.setDateRequested(incoming.getDateRequested());
+        request.setDateNeeded(incoming.getDateNeeded());
+        request.setDone(incoming.getDone());
+
+        recReqRep.save(request);
+        return request;
+    }
+
 }
